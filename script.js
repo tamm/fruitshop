@@ -38,7 +38,16 @@ class Stock {
 	}
 
 	ShowList() {
-		Log.Output(this.List());
+		if (Object.keys(this.List()).length > 0) {
+				Log.Output(`Showing stock`);
+			Object.keys(this.List()).forEach((key) => {
+				let item = this.List()[key];
+
+				Log.Output(item);
+			});
+		} else {
+			Log.Output('No stock to show');
+		}
 	}
 }
 let stock = new Stock();
@@ -101,16 +110,15 @@ class Orders {
 
 		this.DrawOrderButtons();
 		Log.Output(`Added order`);
-		this.ShowList();
 	}
 
 	RemoveOrder(orderId = this.orders.length - 1) {
 		if (this.orders.length > 0) {
 			this.orders.splice(orderId, 1);
-			this.DrawOrderButtons();
 			Log.Output(`Removed order`);
+			this.DrawOrderButtons();
 		} else {
-			Log.Output('No orders to Remove', this.List());
+			Log.Output('No orders to remove');
 		}
 	}
 
@@ -164,13 +172,17 @@ class Orders {
 	}
 
 	ShowList() {
-		this.orders.forEach((order, index) => {
-			Log.Output(`Order ${index}`);
+		if (this.orders.length > 0) {
+			this.orders.forEach((order, index) => {
+				Log.Output(`Showing order ${index}`);
 
-			order.List().items.forEach((item) => {
-				Log.Output(`${item.item.Name}, ${item.quantity}`);
+				order.List().items.forEach((item) => {
+					Log.Output(`${item.item.Name}, ${item.quantity}`);
+				});
 			});
-		});
+		} else {
+			Log.Output('No orders to show');
+		}
 	}
 }
 let orders = new Orders();
@@ -184,11 +196,22 @@ let test = function() {
 	orders.ShowList();
 
 	orders.AddOrder();
-	let order = orders.List()[0];
 
-	order.AddToOrder(3,3);
-	order.AddToOrder(3,3);
-	order.RemoveFromOrder(3,3);
+	let list = orders.List();
+
+	list[list.length - 1].AddToOrder(3,3);
+	list[list.length - 1].AddToOrder(3,3);
+	list[list.length - 1].RemoveFromOrder(3,3);
+
+	orders.AddOrder();
+
+	list[list.length - 1].AddToOrder(1,3);
+	list[list.length - 1].AddToOrder(2,3);
+	list[list.length - 1].RemoveFromOrder(3,3);
+
+	orders.AddOrder();
+
+	orders.RemoveOrder(1);
 
 	Log.Output('orders.ShowList()');
 	orders.ShowList();
