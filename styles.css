@@ -1,0 +1,69 @@
+body {
+	font-family: Helvetica, Arial, sans-serif;
+
+}
+
+section {
+	display: flex;
+	flex-direction: row;
+	align-items: center
+}
+
+section > * {
+	flex: 1 1 auto;
+    flex-wrap: wrap;
+}
+
+button {
+	background: orange;
+	color: white;
+	font-weight: 700
+}
+
+#log {
+	font-family: Monaco,'Courier New', monospace;
+	white-space: pre-wrap;
+	background: #333;
+	color: lime;
+
+	list-style: none;
+	padding: 1rem;
+}
+
+#log li {
+	margin-bottom: 1rem;
+}
+
+#orders {
+	flex-direction: column;
+}
+
+.order {
+	flex-direction: column;
+	align-items: initial;
+	margin-bottom: 1rem
+}
+
+.add-button {
+	background: green;
+}
+
+.remove-button {
+	background: red;
+}
+
+.order-item {
+	display: flex;
+}
+
+.order-item > :first-child {
+	flex: 1 1 auto;
+}
+
+.order-item > * {
+	flex: 0 1 auto;
+}
+
+.order-item > span {
+	padding: 0 1rem 0 0
+}

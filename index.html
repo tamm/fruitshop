@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Fruit shop</title>
+
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+<body>
+
+	<section>
+		<button onclick="test()">Run test</button>
+	</section>
+
+	<section>
+		<button onclick="orders.ShowList()">Show Orders</button>
+		<button onclick="stock.ShowList()">Show Stock</button>
+		<button onclick="orders.AddOrder()">Add Order</button>
+		<button onclick="orders.RemoveOrder()">Remove Last Order</button>
+	</section>
+
+	<section>
+		Interact with orders
+	</section>
+
+	<section id="orders">
+
+	</section>
+
+	<section>
+		<ul id="log"></ul>
+	</section>
+
+	<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
